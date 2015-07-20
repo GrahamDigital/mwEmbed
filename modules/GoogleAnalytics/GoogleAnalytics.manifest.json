@@ -41,6 +41,20 @@
                 "doc" : "Main logic for Google Analytic tracker code, sends the tracking data back to the Google Analytics servers if enabled.",
                 "label": "Do not allow page tracking",
                 "type" : "boolean"
+            "doPlayAction": {
+                "doc": "Action sent to Google Analytics for prefixed event.",
+                "label": "Action for event",
+                "type": "string"
+            },
+            "doPlayValue": {
+                "doc": "Value sent to Google Analytics for prefixed event",
+                "label": "Value for event",
+                "type": "string"
+            },
+            "customDimensions" : {
+                "doc" : "Custom dimensions that will be applied to the events, key/value pairs as described <a target=\"_new\" href=\"https://support.google.com/analytics/answer/2709828?hl=en\">here</a>",
+                "label" : "Custom Dimensions",
+                "type" : "object"
             }
         }
     }

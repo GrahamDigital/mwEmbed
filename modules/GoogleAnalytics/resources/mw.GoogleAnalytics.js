@@ -94,6 +94,7 @@
 			this._p100Once = false;
 			this.hasSeeked = false;
 			this.lastSeek = 0;
+
 			window._gaq = window._gaq || [];
 			window._gaq.push([ '_setAccount', _this.getConfig('urchinCode') ]);
 			if (mw.getConfig('debug')) {
@@ -117,6 +118,13 @@
 			if ( !this.getConfig('disableTrackPageview') ) {
 				window._gaq.push(['_trackPageview']);
 			}
+
+			// Custom dimensions
+			$.each(this.getConfig('customDimensions'), function (key, value) {
+				window._gaq.push(key, value);
+			});
+			window._gaq.push([ '_trackPageview' ]);
+
 			var ga = document.createElement('script');
 			ga.type = 'text/javascript';
 			ga.async = true;
@@ -206,7 +214,7 @@
 				try {
 					window.parent[ this.getConfig('trackEventMonitor') ].apply(this, trackingArgs);
 				} catch (e) {
-					// error sending tracking event. 
+					// error sending tracking event.
 					mw.log("Error with google track event: " + e);
 				}
 
