@@ -106,7 +106,10 @@
 			$.each(this.getConfig('customDimensions'), function (key, value) {
 				window._gaq.push(key, value);
 			});
-			window._gaq.push([ '_trackPageview' ]);
+
+			if (!this.getConfig('noTrackPageview')) {
+				window._gaq.push([ '_trackPageview' ]);
+			}
 
 			if (!gaGlobal) {
 				var ga = document.createElement('script');
@@ -192,6 +195,7 @@
 			} else {
 				var gaqAry = trackingArgs.slice(0);
 				gaqAry.unshift("_trackEvent");
+				window._gaq.push(['_setAccount', _this.getConfig('urchinCode')]);
 				window._gaq.push(gaqAry);
 			}
 			// Send the event to the monitor ( if set in the initial options )

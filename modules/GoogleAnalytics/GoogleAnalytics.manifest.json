@@ -36,6 +36,11 @@
                 "doc" : "Custom dimensions that will be applied to the events, key/value pairs as described <a target=\"_new\" href=\"https://support.google.com/analytics/answer/2709828?hl=en\">here</a>",
                 "label" : "Custom Dimensions",
                 "type" : "object"
+            },
+            "noTrackPageview" : {
+              "doc" : "Turn off the initial pageview trigger, helpful in the event of being on a page where the pageview is already being tracked.",
+              "label" : "Turn off Pageview",
+              "type" : "boolean"
             }
         }
     }
